@@ -7,7 +7,7 @@ function adicionarAmigo() {
 
     if (tamanho != 0) {
         amigos.push(nome); 
-        console.log(amigos);  
+        //console.log(amigos);  
         listaAmigos(); // Chama a função para atualizar a lista de amigos na página
     } else {
         alert("Digite o nome do amigo");
@@ -20,13 +20,19 @@ function listaAmigos() {
     for (let i = 0; i < amigos.length; i++) {
         lista += "<li>" + amigos[i] + "</li>";             
     }
-    console.log(lista);
+    //console.log(lista);
     document.getElementById("listaAmigos").innerHTML = lista; 
 }
     
-    function sortearAmigo() {
-        let sorteado = Math.floor(Math.random() * amigos.length); 
-        let amigoSorteado = amigos[sorteado]; 
-        console.log(amigoSorteado); 
-        document.getElementById('resultado').innerHTML = amigoSorteado; 
-    }
+function sortearAmigo() {
+    if (amigos.length === 0) {
+        alert("Adicione amigos antes de sortear.");
+        return;
+    }   
+    let sorteado = Math.floor(Math.random() * amigos.length); 
+    let amigoSorteado = amigos[sorteado]; 
+    //console.log(amigoSorteado); 
+    document.getElementById('resultado').innerHTML = amigoSorteado; 
+    document.getElementById('listaAmigos').innerHTML = ""; // Limpa a lista de amigos no HTML
+    amigos = []; // Limpa o array de amigos
+}
